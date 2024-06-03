@@ -1,4 +1,3 @@
-package school_management_system;
 
 import java.util.*;
 
@@ -53,15 +52,17 @@ public class School_Management_System {
             for (Students students : studentList) {
 
                 if (students.getMName().equalsIgnoreCase(mname) || students.getName().equalsIgnoreCase(name)
-                        || students.getLName().equalsIgnoreCase(lname) || students.getName().equalsIgnoreCase(lname) || students.getLName().equalsIgnoreCase(name)) {
+                        || students.getLName().equalsIgnoreCase(lname) || students.getName().equalsIgnoreCase(lname)
+                        || students.getLName().equalsIgnoreCase(name)) {
 
                     System.out.println(
                             "\n     Id: " + students.getId()
-                            + "\n     Name: " + students.getName() + " " + students.getMName() + " " + students.getLName()
-                            + "\n     Gender: " + students.getGender()
-                            + "\n     Age: " + students.getAge()
-                            + "\n     Course: " + students.getCourse()
-                            + "\n     Contact: 0" + students.getContact());
+                                    + "\n     Name: " + students.getName() + " " + students.getMName() + " "
+                                    + students.getLName()
+                                    + "\n     Gender: " + students.getGender()
+                                    + "\n     Age: " + students.getAge()
+                                    + "\n     Course: " + students.getCourse()
+                                    + "\n     Contact: 0" + students.getContact());
                     z++;
                 }
             }
@@ -130,7 +131,8 @@ public class School_Management_System {
                     if (students.getId() == id) {
 
                         if (students.getId() == id) {
-                            System.out.println("\nName: " + students.getName() + " " + students.getMName() + " " + students.getLName()
+                            System.out.println("\nName: " + students.getName() + " " + students.getMName() + " "
+                                    + students.getLName()
                                     + "\nId: " + students.getId()
                                     + "\nAge: " + students.getAge()
                                     + "\nGender: " + students.getGender()
@@ -153,7 +155,8 @@ public class School_Management_System {
                                             System.out.println("Successfully Removed Student by ID! ");
                                             System.out.println("\n_____________________________________\n\n");
 
-                                            System.out.println("Do you want to remove another student by ID? [1] Yes  [2] No ");
+                                            System.out.println(
+                                                    "Do you want to remove another student by ID? [1] Yes  [2] No ");
 
                                             do {
                                                 try {
@@ -162,7 +165,8 @@ public class School_Management_System {
                                                     r = Integer.parseInt(sr);
 
                                                     while (r != 1 && r != 2) {
-                                                        System.out.print("Invalid choice!! Try Again!!\nEnter choice:  ");
+                                                        System.out
+                                                                .print("Invalid choice!! Try Again!!\nEnter choice:  ");
                                                         r = in.nextInt();
                                                     }
 
@@ -186,7 +190,8 @@ public class School_Management_System {
                                             System.out.println("Removed Student by ID Cancelled! ");
                                             System.out.println("\n_____________________________________\n\n");
 
-                                            System.out.println("Do you want to remove another student by ID? [1] Yes [2] No ");
+                                            System.out.println(
+                                                    "Do you want to remove another student by ID? [1] Yes [2] No ");
 
                                             do {
                                                 try {
@@ -195,7 +200,8 @@ public class School_Management_System {
                                                     r = Integer.parseInt(sr);
 
                                                     while (r != 1 && r != 2) {
-                                                        System.out.print("Invalid choice!! Try Again!!\nEnter choice:  ");
+                                                        System.out
+                                                                .print("Invalid choice!! Try Again!!\nEnter choice:  ");
                                                         r = in.nextInt();
                                                     }
 
@@ -278,8 +284,9 @@ public class School_Management_System {
     public static void ExistingF() {
 
         id = 1;
-// Long can store 10 digit easily. Long phoneNumber = 1234567890
-//The int type in Java can be used to represent any whole number from -2147483648 to 2147483647. 
+        // Long can store 10 digit easily. Long phoneNumber = 1234567890
+        // The int type in Java can be used to represent any whole number from
+        // -2147483648 to 2147483647.
 
         Students student1 = new Students(id++, "Rhon", "M", "Trazo", "Male", 19, "BSIT", 923432425);
         Students student2 = new Students(id++, "Dexter", "P", "Maghanoy", "Male", 22, "BSIT", 91584325);
@@ -447,7 +454,8 @@ public class School_Management_System {
 
         for (Students students : studentList) {
 
-            if (students.getName().equalsIgnoreCase(name) && students.getMName().equalsIgnoreCase(mname) && students.getLName().equalsIgnoreCase(lname)) {
+            if (students.getName().equalsIgnoreCase(name) && students.getMName().equalsIgnoreCase(mname)
+                    && students.getLName().equalsIgnoreCase(lname)) {
                 System.out.print("\nThe name you entered is already in the system!!! Try Again!!!\n\n");
 
                 do {
@@ -484,28 +492,23 @@ public class School_Management_System {
         }
 
         do {
+            System.out.print("Enter Student Age: ");
+            
             try {
+                String input = in.nextLine();
 
-                System.out.print("Enter Student Age: ");
+                age = Integer.parseInt(input);
 
-                sage = in.next();
-                age = Integer.parseInt(sage);
-                while (age < 1) {
-                    System.out.println("Invalid Age!!! Try again!!");
-                    System.out.print("Enter Student Age: ");
-                    sage = in.next();
-                    age = Integer.parseInt(sage);
+                if (age < 1) {
+                    System.out.println("Invalid Age. Age must be 1 or older.");
+                } else {
+                    System.out.println("Age: " + age);
+                    break; // Exit the loop if age is valid
                 }
-
-                loop = false;
-            } catch (Exception e) {
-
-                System.out.println("\n\nIncorrect Age! Try Again!!!");
-
-                loop = true;
-
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
             }
-        } while (loop);
+        } while (true);
 
         System.out.print(
                 "\n'Male or Female'\nEnter Student Gender: ");
@@ -526,7 +529,8 @@ public class School_Management_System {
         course = in.next();
 
         while (!course.equals(
-                "1") && !course.equals("2") && !course.equals("3") && !course.equals("4") && !course.equals("5") && !course.equals("6")) {
+                "1") && !course.equals("2") && !course.equals("3") && !course.equals("4") && !course.equals("5")
+                && !course.equals("6")) {
             System.out.println("Invalid choice!! Try Again!!");
             System.out.print("Enter course: ");
             course = in.next();
@@ -565,9 +569,9 @@ public class School_Management_System {
         do {
             try {
                 System.out.println("\nEnter Student Contact number: ");
-//                      2147483647
+                // 2147483647
                 contact = in.nextLong();
-                //  contact = Long.parseLong(contacts);
+                // contact = Long.parseLong(contacts);
 
                 loop = false;
             } catch (Exception e) {
@@ -583,13 +587,13 @@ public class School_Management_System {
 
         System.out.println(
                 "\n_______________________________________\n"
-                + "\n\n     STUDENT SUCCESSFULY ADDED!\n"
-                + "\n     Id: " + students.getId()
-                + "\n     Name: " + students.getName() + " " + students.getMName() + " " + students.getLName()
-                + "\n     Gender: " + students.getGender()
-                + "\n     Age: " + students.getAge()
-                + "\n     Course: " + students.getCourse()
-                + "\n     Contact: 0" + students.getContact() + "\n_______________________________________");
+                        + "\n\n     STUDENT SUCCESSFULY ADDED!\n"
+                        + "\n     Id: " + students.getId()
+                        + "\n     Name: " + students.getName() + " " + students.getMName() + " " + students.getLName()
+                        + "\n     Gender: " + students.getGender()
+                        + "\n     Age: " + students.getAge()
+                        + "\n     Course: " + students.getCourse()
+                        + "\n     Contact: 0" + students.getContact() + "\n_______________________________________");
 
         id++;
         do {
@@ -629,101 +633,69 @@ public class School_Management_System {
 
     private static void option() {
 
-        System.out.println("\n\n_______________________________________\n~~Welcome to School Management System~~\n\n      Option"
-                + "\n         [1]Input New Student"
-                + "\n         [2]Show all Students List"
-                + "\n         [3]Search Students by Name"
-                + "\n         [4]Remove Students by Id"
-                + "\n         [5]Exit\n_______________________________________");
+        System.out.println(
+                "\n\n_______________________________________\n~~Welcome to School Management System~~\n\n      Option"
+                        + "\n         [1]Input New Student"
+                        + "\n         [2]Show all Students List"
+                        + "\n         [3]Search Students by Name"
+                        + "\n         [4]Remove Students by Id"
+                        + "\n         [5]Exit\n_______________________________________");
     }
 
     private static void mainfunction() {
-
         do {
-
             option();
             System.out.print("   Enter: ");
-            input = in.next();
-            System.out.print("\n");
+            input = in.next().trim(); // Trim any leading or trailing whitespace
+
             switch (input) {
-
-                //nganong string ato gamit sa input
-                //kay limited raman ang choice 1 2 3 4 5 raman siya so pwede ra sya gamitan ug string lang
-                //then ma access man siya kay naa namay switch kay ang switch the same ra man na siya sa if else
                 case "1":
-
                     inputNewStudents();
-
-                    // addNewStudents(students);
                     break;
-
                 case "2":
-
                     showAllStudentEnrolled();
-
                     break;
                 case "3":
-
                     searchByName();
                     break;
                 case "4":
-
                     removeStudentById();
-
                     break;
                 case "5":
-
-                    //so first iya buhaton ang pag display sa are you sure you want to exit.
-                    //then mo choose siya ug either sa 1 or 2 pag wala sa ge input na choice mo loop siya.
-                    do {
-                        try {
-
-                            System.out.print("\nAre you sure you want to exit? [1] Yes      [2] No\n");
-                            System.out.print("Enter choice: ");
-                            sy = in.next();
-                            y = Integer.parseInt(sy);
-
-                            while (y != 1 && y != 2) {
-
-                                System.out.println("Invalid choice!! Try Again!!");
-                                System.out.print("Enter choice: ");
-                                sy = in.next();
-                                y = Integer.parseInt(sy);
-                            }
-                            if (y == 1) {
-                                System.exit(0);
-
-                            } else if (y == 2) {
-
-                                mainfunction();
-                            }
-
-                        } catch (Exception e) {
-
-                            System.out.println("Invalid Input!! Try Again!!");
-                            loop = true;
-
-                        }
-                    } while (loop);
-
-                    System.exit(0);
-
+                    exitSystem();
                     break;
                 default:
-
-                    System.out.print("\n\n\nInput invalid!! Try Again!!\n");
-                    loop = true;
+                    System.out.println("\n\n\nInput invalid!! Try Again!!\n");
                     break;
             }
-
-        } while (!input.equals("5"));
-
+        } while (true); // Loop indefinitely until an explicit exit
     }
 
-//diri mag start ang pag read sa code sa main
+    private static void exitSystem() {
+        do {
+            try {
+                System.out.print("\nAre you sure you want to exit? [1] Yes      [2] No\n");
+                System.out.print("Enter choice: ");
+                int choice = in.nextInt();
+
+                if (choice == 1) {
+                    System.exit(0);
+                } else if (choice == 2) {
+                    return; // Return to the main menu
+                } else {
+                    System.out.println("Invalid choice!! Try Again!!");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input!! Try Again!!");
+                in.next(); // Consume the invalid input
+            }
+        } while (true);
+    }
+
+    // diri mag start ang pag read sa code sa main
     public static void main(String[] args) {
 
-        //proceed siya sa function na ExistingF();
+        // proceed siya sa function na ExistingF();
         ExistingF();
 
     }
